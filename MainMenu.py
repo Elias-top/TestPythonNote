@@ -21,17 +21,29 @@ class MainMenu():
             body = input("Введите тело заметки: ")
             self.commands_menu.addNote(title, body)
         elif(command == '2'):
-            note_id = int(input("Введите ID заметки для редактирования: "))
+            try:
+                note_id = int(input("Введите ID заметки для редактирования: "))
+            except ValueError:
+                print("Введен неверный ID")
+                return
             title = input("Введите новый заголовок: ")
             body = input("Введите новое тело заметки: ")
             self.commands_menu.editNote(note_id, title, body)
         elif(command == '3'):
-            note_id = int(input("Введите ID заметки для удаления заметки: "))
+            try:
+                note_id = int(input("Введите ID заметки для удаления заметки: "))
+            except ValueError :
+                print("Введен неверный ID")
+                return
             self.commands_menu.deleteNote(note_id)
         elif(command == '4'):
             self.commands_menu.readNotes()
         elif(command == '5'):
-            note_id = int(input("Введите ID заметки для чтения заметки: "))
+            try:
+                note_id = int(input("Введите ID заметки для чтения заметки: "))
+            except ValueError:
+                print("Введен неверный ID")
+                return
             self.commands_menu.readNote(note_id)
         elif(command == '6'):
             target_date = input("Введите дату в формате YYYY-MM-DD: ")
